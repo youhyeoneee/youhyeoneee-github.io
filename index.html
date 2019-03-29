@@ -84,11 +84,125 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="1-Pandas"><a href="#1-Pandas" class="headerlink" title="1. Pandas"></a>1. Pandas</h2><p>Python Data Analysis Library</p>
+<ul>
+<li><p>파이썬에서 사용하는 데이터분석 라이브러리</p>
+</li>
+<li><p>행과 열로 이루어진 데이터 객체를 만들어 다룰 수 있게 함.</p>
+</li>
+<li><p>보다 안정적으로 대용량의 데이터들을 처리하는데 매우 편리한 도구</p>
+</li>
+</ul>
+<h2 id="2-Pandas-자료-구조"><a href="#2-Pandas-자료-구조" class="headerlink" title="2. Pandas 자료 구조"></a>2. Pandas 자료 구조</h2><ul>
+<li><p>1차원 자료구조 : Series</p>
+</li>
+<li><p>2차원 자료구조 : DataFrame</p>
+</li>
+<li><p>3차원 자료구조 : Panel</p>
+</li>
+</ul>
+<h3 id="1-Series"><a href="#1-Series" class="headerlink" title="(1) Series"></a>(1) Series</h3><p> Series is a one-dimensional labeled array capable of holding any data type (integers, strings, floating point numbers, Python objects, etc.). </p>
+<ul>
+<li><p>가장 간단한 1차원 자료구조</p>
+</li>
+<li><p>Series는 배열/리스트와 같은 일련의 시퀀스 데이타를 받아들인다.</p>
+</li>
+<li><p>별도의 인덱스 레이블을 지정하지 않으면 자동적으로 0부터 시작되는 디폴트 정수<br>인덱스를 사용한다.</p>
+</li>
+<li><p>선언 &gt;&gt;&gt; s = pd.Series(data, index=index)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">obj = pd.Series([4, 7, -5, 3])</span><br></pre></td></tr></table></figure>
+<h3 id="2-DataFrame"><a href="#2-DataFrame" class="headerlink" title="(2) DataFrame"></a>(2) DataFrame</h3><p> DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. You can think of it like a spreadsheet or SQL table, or a dict of Series objects. It is generally the most commonly used pandas object. </p>
+<ul>
+<li><p>2차원 자료구조</p>
+</li>
+<li><p>DataFrame는 행과 열이 있는 테이블 데이타(Tabular Data)를 받아들인다. </p>
+</li>
+<li><p>이는 python의 dictionary 또는 numpy의 array로 정의할 수 있다.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;&apos;name&apos; : [&apos;Beomwoo&apos;, &apos;Beomwoo&apos;, &apos;Beomwoo&apos;, &apos;Kim&apos;, &apos;Park&apos;], &apos;year&apos;:[2016, 2014, 2015, 2016, 2017]&#125;, &apos;points&apos; : [1.5, 1.7, 3.6, 2.4, 2.9]&#125;</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(data)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><center>name</center></th>
+<th style="text-align:center"><center>year</center></th>
+<th style="text-align:right"><center>points</center></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Beomwoo</td>
+<td style="text-align:center"><center>2016 </center></td>
+<td style="text-align:right">1.5</td>
+</tr>
+<tr>
+<td style="text-align:left">Beomwoo</td>
+<td style="text-align:center"><center>2014 </center></td>
+<td style="text-align:right">1.7</td>
+</tr>
+<tr>
+<td style="text-align:left">Beomwoo</td>
+<td style="text-align:center"><center>2015 </center></td>
+<td style="text-align:right">3.6</td>
+</tr>
+<tr>
+<td style="text-align:left">Kim</td>
+<td style="text-align:center"><center>2016 </center></td>
+<td style="text-align:right">2.4</td>
+</tr>
+<tr>
+<td style="text-align:left">Park</td>
+<td style="text-align:center"><center>2017 </center></td>
+<td style="text-align:right">2.9</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-Panel"><a href="#3-Panel" class="headerlink" title="(3) Panel"></a>(3) Panel</h3><p> Panel is a somewhat less-used, but still important container for 3-dimensional data. The term panel data is derived from econometrics and is partially responsible for the name pandas: pan(el)-da(ta)-s. The names for the 3 axes are intended to give some semantic meaning to describing operations involving panel data and, in particular, econometric analysis of panel data.</p>
+<ul>
+<li><p>3차원 자료구조</p>
+</li>
+<li><p>Panel은 Axis 0 (items), Axis 1 (major_axis), Axis 2 (minor_axis) 등 3개의 축을 가지고 있다</p>
+</li>
+<li><p>Axis 0은 그 한 요소가 2차원의 DataFrame 에 해당되며, Axis 1은 DataFrame의 행(row)에 해당되고, Axis 2는 DataFrame의 열(column)에 해당된다.</p>
+</li>
+</ul>
+<p>+아래 예제는 numpy를 사용하여 3차원 난수를 발생시킨 후, 이를 pandas.Panel()에 적용한 예이다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = np.random.rand(2,3,4)</span><br><span class="line">p = pd.Panel(data)</span><br></pre></td></tr></table></figure></p>
+<p>2(items) <em> 3(major axis) </em> 4(miner axis)  크기의 Panel 객체가 생성되었음을 알 수 있다.<br>Panel 객체 p로부터 p[0]을 조회하면, Axis 0의 첫번째 요소인 DataFrame이 출력됨을 볼 수 있다.</p>
+<h2 id="3-데이터-액세스"><a href="#3-데이터-액세스" class="headerlink" title="3. 데이터 액세스"></a>3. 데이터 액세스</h2><ul>
+<li><p>Indexing, arrtibute 사용 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[&apos;year&apos;] #year column 출력 </span><br><span class="line">df.year #위에와 같은 의미</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Boolean indexing : 특정 조건의 데이터만 필터링 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[&apos;year&apos;]&gt;2016] #df자료에서 year이 2016보다 큰 행만 출력</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>데이터 양이 많은 경우</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.head() #기본적으로 앞 5개, 데이터의 개수를 인자로 넣으면 그 만큼의 데이터를 보여준다.</span><br><span class="line">df.tail() #기본적으로 뒤 5개, 위와 같다.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>다양한 연산 함수 : sum(), mean(), max(), min(), describe() …</p>
+</li>
+<li><p>1주차 피드백 : 첫번째 행에서 첫번째 열 뽑기 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df.loc[df.index[0], df.columns[0]]) #.loc는 [인덱스(행)명, 칼럼(열)명]으로 접근 가능하다</span><br><span class="line">print(df.iloc[0,0]) #.iloc는 index숫자로써 가져온다.</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-외부-데이터-읽고-쓰기"><a href="#4-외부-데이터-읽고-쓰기" class="headerlink" title="4. 외부 데이터 읽고 쓰기"></a>4. 외부 데이터 읽고 쓰기</h2><ul>
+<li>pandas는 CSV 파일, 텍스트 파일, 엑셀 파일, SQL 데이타베이스, HDF5 포맷 등 다양한 외부 리소스에 데이타를 읽고 쓸 수 있는 기능을 제공</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_excel(&apos;foo.xlsx&apos;, &apos;Sheet1&apos;, index_col=None, na_values=[&apos;NA&apos;]) #읽기</span><br><span class="line">df = pd.to_excel(&apos;foo.xlsx&apos;, sheet_name=&apos;Sheet1&apos;) #쓰기</span><br></pre></td></tr></table></figure>
+<h2 id="참고-출처"><a href="#참고-출처" class="headerlink" title="참고 출처"></a>참고 출처</h2><ul>
+<li><p><a href="http://pythonstudy.xyz/python/article/408-pandas-%EB%8D%B0%EC%9D%B4%ED%83%80-%EB%B6%84%EC%84%9D" target="_blank" rel="noopener">예제로 배우는 Python 프로그래밍 : Pandas데이터 분석</a></p>
+</li>
+<li><p><a href="https://doorbw.tistory.com/172" target="_blank" rel="noopener">Pandas 기초 정리</a></p>
+</li>
+<li><p><a href="https://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html" target="_blank" rel="noopener">pandas 데이터 구조 소개</a></p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/first-post/" data-id="cjtttk2mv0000jcvcoks0zsco" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/first-post/" data-id="cjttttot90000u4vctroikweq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/29/hello-world/" data-id="cjtttk2n30001jcvcsidkv5xq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/29/hello-world/" data-id="cjttttotl0001u4vcjv0m5u41" class="article-share-link">Share</a>
       
       
     </footer>
